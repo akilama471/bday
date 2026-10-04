@@ -1,0 +1,230 @@
+:root {
+    --primary-color: #ff4b72;
+    --secondary-color: #ff8fa3;
+    --bg-gradient-1: #1a0b1c;
+    --bg-gradient-2: #3a1c32;
+    --text-color: #fdfdfd;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, var(--bg-gradient-1), var(--bg-gradient-2));
+    min-height: 100vh;
+    color: var(--text-color);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#particles-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    bottom: -50px;
+    background: transparent;
+    font-size: 20px;
+    animation: floatUp 8s infinite linear;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-120vh) scale(1.2) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+    perspective: 1000px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 50px 40px;
+    width: 90vw;
+    max-width: 550px;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 35px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(255, 75, 114, 0.15);
+}
+
+.card-front h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4.5rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(255, 75, 114, 0.4);
+    animation: pulseGlow 2.5s infinite alternate;
+}
+
+.card-front p {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    opacity: 0.9;
+    color: var(--secondary-color);
+}
+
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 10px rgba(255, 75, 114, 0.4); }
+    to { text-shadow: 0 0 25px rgba(255, 75, 114, 0.8), 0 0 10px rgba(255, 255, 255, 0.3); }
+}
+
+.glow-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    padding: 16px 45px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(255, 75, 114, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.glow-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 75, 114, 0.5);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.card-inside {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.card-inside h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.heart-frame {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+    position: relative;
+    clip-path: path('M75 135.5C75 135.5 13.5 87 13.5 45.5C13.5 22.5 31.5 5 54.5 5C68.5 5 75 14.5 75 14.5C75 14.5 81.5 5 95.5 5C118.5 5 136.5 22.5 136.5 45.5C136.5 87 75 135.5 75 135.5Z');
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 20px rgba(255, 75, 114, 0.4);
+    animation: fadeIn 1.5s ease-in forwards;
+}
+
+.heart-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message {
+    line-height: 1.9;
+    font-size: 1.15rem;
+    margin-bottom: 35px;
+    font-weight: 300;
+    color: #f0f0f0;
+}
+
+.signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.heart-pulse {
+    font-size: 3rem;
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
+    filter: drop-shadow(0 0 10px rgba(255, 75, 114, 0.6));
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    15% { transform: scale(1.3); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.3); }
+    60% { transform: scale(1); }
+    100% { transform: scale(1); }
+}
+
+.fade-out {
+    animation: fadeOut 0.6s forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; transform: scale(0.8); display: none; }
+}
+
+/* 3D Spin effect class added via JS */
+.spin-in {
+    animation: spinIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes spinIn {
+    from { transform: rotateY(-180deg) scale(0.8); opacity: 0; }
+    to { transform: rotateY(0) scale(1); opacity: 1; }
+}
